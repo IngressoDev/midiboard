@@ -28,15 +28,18 @@
         <tr>
           <th scope="col">Key</th>
           <th scope="col">Value</th>
+          <th class="text-right" scope="col">Action</th>
         </tr>
-        <!-- <tr data-key-state="144,100">
+        <tr data-key-state="144,100">
           <td>100</td>
           <td>Pressed</td>
+          <td class="text-right"><button class="action-btn" onclick="openNewInputDialog()">A</button></td>
         </tr>
         <tr>
           <td>100</td>
           <td>Released</td>
-        </tr> -->
+          <td class="text-right"><button class="action-btn" onclick="openNewInputDialog()">A</button></td>
+        </tr>
       </table>
     </fieldset>
     <fieldset class="flex-item mt5">
@@ -53,6 +56,7 @@
   </div>
 
   <script>
+    const { ipcRenderer } = require('electron');
     let midiDevices = null;
 
     function searchMidiDevices() {
@@ -62,10 +66,6 @@
     function onMIDISuccess(midiAccess) {
       midiDevices = midiAccess.inputs.values();
       renderAvailableMidiDevices();
-
-
-
-      // var outputs = midiAccess.outputs;
     }
 
     function onMIDIFailure() {
@@ -81,6 +81,11 @@
     function startListenToDevice(selectedIndex) {
       console.log(selectedIndex)
       // midiDevices[selectedIndex]
+    }
+
+    function openNewInputDialog() {
+      console.log('Test')
+      ipcRenderer.send('open-new-input-dialog', 'ping')
     }
   </script>
 </body>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+  <div class="flex flex-column">
+        <input type="text" class="flex-item" />
+    <div class="flex-item">
+      <label>Title</label>
+      <input type="text" />
+    </div>
+
+  </div>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+    let midiDevices = null;
+
+    function searchMidiDevices() {
+      navigator.requestMIDIAccess().then(onMIDISuccess, onMIDIFailure);
+    }
+
+    function onMIDISuccess(midiAccess) {
+      midiDevices = midiAccess.inputs.values();
+      renderAvailableMidiDevices();
+    }
+
+    function onMIDIFailure() {
+      console.log('Could not access your MIDI devices.');
+    }
+
+    function renderAvailableMidiDevices() {
+      for (const device of midiDevices) {
+        document.getElementById('available-midi-devices').innerHTML += `<option value="${''}">${'Device'}</option>`;
+      }
+    }
+
+    function startListenToDevice(selectedIndex) {
+      console.log(selectedIndex)
+      // midiDevices[selectedIndex]
+    }
+
+    function openNewInputDialog() {
+      console.log('Test')
+      ipcRenderer.send('open-new-input-dialog', 'ping')
+    }
+  </script>
+</body>
+
+</html>

@@ -23,11 +23,38 @@
   margin-top: 5px;
 }
 
+.text-right {
+  text-align: right;
+}
+
+.action-btn {
+  /* align-items: flex-start; */
+  /* text-align: center; */
+  /* cursor: default; */
+  /* color: buttontext; */
+  background-color: transparent;
+  box-sizing: border-box;
+  padding: 5px;
+  border-width: 1px;
+  border-style: outset;
+  border-color: grey;
+  border-radius: 3px;
+  /* border-image: initial; */
+}
+
 /* CSS Selectors Styles */
+.action-btn:hover {
+  background-color: lightgrey;
+}
+
 .flex input:not([type="checkbox"]),
 select,
 table {
   width: 100%;
+}
+
+table th:last-of-type {
+  width: 30px;
 }
 
 /* Element Styles */
