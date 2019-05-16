@@ -1,0 +1,66 @@
+/* CSS Classes */
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-item {
+  flex: auto;
+}
+
+.m5 {
+  margin: 5px;
+}
+
+.mt5 {
+  margin-top: 5px;
+}
+
+/* CSS Selectors Styles */
+.flex input:not([type="checkbox"]),
+select,
+table {
+  width: 100%;
+}
+
+/* Element Styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+label {
+  font-size: 14px;
+  /* color: lightgrey; */
+}
+
+input[type='text'],
+select,
+button {
+  padding: 5px;
+  margin: 3px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  border-bottom: 2px solid #dee2e6;
+  padding: 0.3rem;
+  font-weight: 500;
+}
+
+td {
+  border-top: 1px solid #dee2e6;
+  padding: 0.3rem;
+}

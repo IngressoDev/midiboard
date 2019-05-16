@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+  <div class="flex flex-column">
+    <fieldset class="flex-item">
+      <legend>Available MIDI Devices</legend>
+      <!-- <label>Available MIDI Devices:</label> -->
+      <div class="flex flex-row">
+        <select id="available-midi-devices" onchange="startListenToDevice(this.selectedIndex)">
+          <option value="none">No Devices</option>
+          <option id="1" value="Bla">Test</option>
+        </select>
+        <button onclick="searchMidiDevices()">Search</button>
+      </div>
+    </fieldset>
+    <fieldset class="flex-item mt5">
+      <legend style="white-space: nowrap"><input type="checkbox" value="Check" />Listen to new device inputs</legend>
+
+      <table>
+        <tr>
+          <th scope="col">Key</th>
+          <th scope="col">Value</th>
+        </tr>
+        <!-- <tr data-key-state="144,100">
+          <td>100</td>
+          <td>Pressed</td>
+        </tr>
+        <tr>
+          <td>100</td>
+          <td>Released</td>
+        </tr> -->
+      </table>
+    </fieldset>
+    <fieldset class="flex-item mt5">
+      <legend>Saved Actions</legend>
+
+      <table>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Action</th>
+        </tr>
+      </table>
+    </fieldset>
+    </fieldset>
+  </div>
+
+  <script>
+    let midiDevices = null;
+
+    function searchMidiDevices() {
+      navigator.requestMIDIAccess().then(onMIDISuccess, onMIDIFailure);
+    }
+
+    function onMIDISuccess(midiAccess) {
+      midiDevices = midiAccess.inputs.values();
+      renderAvailableMidiDevices();
+
+
+
+      // var outputs = midiAccess.outputs;
+    }
+
+    function onMIDIFailure() {
+      console.log('Could not access your MIDI devices.');
+    }
+
+    function renderAvailableMidiDevices() {
+      for (const device of midiDevices) {
+        document.getElementById('available-midi-devices').innerHTML += `<option value="${''}">${'Device'}</option>`;
+      }
+    }
+
+    function startListenToDevice(selectedIndex) {
+      console.log(selectedIndex)
+      // midiDevices[selectedIndex]
+    }
+  </script>
+</body>
+
+</html>
